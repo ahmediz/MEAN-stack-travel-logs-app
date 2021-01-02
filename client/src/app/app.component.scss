@@ -1,0 +1,21 @@
+button {
+  appearance: none;
+  width: 56px;
+  height: 56px;
+  background: royalblue;
+  border-radius: 50%;
+  border: 0;
+  color: white;
+  font-size: 24px;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 9;
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: 0 4px 12px rgba($color: #000000, $alpha: .24);
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+

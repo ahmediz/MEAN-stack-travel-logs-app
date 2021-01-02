@@ -1,0 +1,25 @@
+<mgl-map
+  [style]="'mapbox://styles/mapbox/light-v10'"
+  [zoom]="[9]"
+  [center]="[31.1884234, 30.0596185]"
+  [doubleClickZoom]="false"
+  (mapDblClick)="addLog($event)"
+>
+  <ng-container *ngFor="let m of logs$ | async; trackBy: trackBy; let i = index">
+    <app-marker-details
+      [item]="m"
+      (closed)="selectedMarker = null"
+      *ngIf="m._id === selectedMarker"
+    ></app-marker-details>
+    <mgl-marker [lngLat]="[m.longitude, m.latitude]">
+      <div class="marker" (click)="showDetails(m._id)">
+        <span class="material-icons">location_on</span>
+      </div>
+    </mgl-marker>
+  </ng-container>
+  <app-add-log
+    *ngIf="clickedCordinates"
+    [clickedCords]="clickedCordinates"
+    (cordsCleared)="clickedCordinates = null"
+  ></app-add-log>
+</mgl-map>

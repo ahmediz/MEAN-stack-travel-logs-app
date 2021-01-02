@@ -1,0 +1,32 @@
+<mgl-popup
+  [lngLat]="[clickedCords?.lng, clickedCords?.lat]"
+  [closeOnClick]="false"
+  (popupClose)="clickedCords = null"
+>
+  <div class="add-new-log">
+    <h2>Add New Log</h2>
+    <form [formGroup]="logForm">
+      <div class="field">
+        <input type="text" placeholder="Title" formControlName="title">
+      </div>
+      <div class="field">
+        <input type="url" placeholder="Image Url" formControlName="image">
+      </div>
+      <div class="field">
+        <input type="number" min="0" max="10" placeholder="Rating" formControlName="rating">
+      </div>
+      <div class="field">
+        <input type="date" placeholder="Visit Date" formControlName="visitDate">
+      </div>
+      <div class="field">
+        <textarea cols="30" rows="3" placeholder="Comments" formControlName="comments"></textarea>
+      </div>
+      <button type="button" (click)="submit()">Save</button>
+    </form>
+  </div>
+</mgl-popup>
+<mgl-marker [lngLat]="[clickedCords?.lng, clickedCords?.lat]">
+  <div class="marker">
+    <span class="material-icons">location_on</span>
+  </div>
+</mgl-marker>
